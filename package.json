@@ -1,0 +1,24 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "Generates two types of studying flashcards",
+  "main": "basic-card.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paden-pace/flashcard-generator.git"
+  },
+  "keywords": [
+    "flashcards",
+    "javascript",
+    "cli"
+  ],
+  "author": "Paden Pace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paden-pace/flashcard-generator/issues"
+  },
+  "homepage": "https://github.com/paden-pace/flashcard-generator#readme"
+}
