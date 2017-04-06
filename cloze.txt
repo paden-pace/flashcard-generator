@@ -1,0 +1,2 @@
+George Washington was the first president.%George Washington%was the first president.^
+Abraham Lincoln was the 16th president.%Abraham Lincoln%was the 16th president.^Thomas Jefferson was the 2nd Vice President of the US.%Thomas Jefferson%was the 2nd Vice President of the US.^
