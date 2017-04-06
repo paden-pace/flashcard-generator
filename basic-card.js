@@ -5,10 +5,6 @@ var inquirer = require("inquirer");
 var request = require("request");
 
 
-// var action = process.argv[2];
-// var value = process.argv[3];
-
-
 // var firstPresident = new BasicCard(
 //     "Who was the first president of the United States?", "George Washington");
 
@@ -19,7 +15,39 @@ var request = require("request");
 // console.log(firstPresident.back); 
 
 
-// We will then create a switch-case statement (if-then would also work).
+function CardObj(back, front){
+    this.back = back,
+    this.front = front,
+    this.readBack = function(){
+        console.log("back: " + this.back);
+    },
+    this.readFront = function(){
+        console.log("front: " + this.front);
+    }
+};
+
+function incriment(i, data) {
+    if (i < (data.length-1)) {
+        
+        console.log("test" + i);
+        var side = data[i].split("%");
+        var newCardObj = new CardObj(side[0], side[1]);
+        newCardObj.readBack();
+        inquirer.prompt([
+            {
+                type: "confirm",
+                message: "Press [enter] to see the answer.",
+                name: "confirmation"
+            }
+        ]).then(function(review) {
+                newCardObj.readFront();
+                i++;
+                incriment(i, data);
+        });
+    };
+};
+
+// A switch-case statement
 // The switch-case will direct which function gets run.
 function options (){
   inquirer.prompt([
@@ -46,6 +74,7 @@ function options (){
         }
     });
 };
+
 
 
 function newCard(){
@@ -78,28 +107,10 @@ function reviewCards(){
     // Break down the text file to the individual cards
     data = data.split("^");
 
-    // Loop through those cards and split each value into 2 sides
-    for (var i = 0; i < (data.length-1); i++) {
-        //console.log("flashcard: " + data[i]);
-        var side = data[i].split("%");
-        console.log("back: " + side[0]);
-        console.log("front: " + side[1]);
-        // for (var i = 0; i < side.length; i++) {
-        //     console.log(side[i]);
-        //     inquirer.prompt([
-        //         {
-        //             type: "confirm",
-        //             message: "Press [enter] to see the back",
-        //             name: "confirmation"
-        //         }
-        //     ]).then(function(review) {
-        //             console.log(side[i+1]);
-        //     });
-        // };
-    };
-  });
+    // using that data run the incriment function
+    incriment(0, data);
 
-//option to delete??
+  });
 
 };
 
