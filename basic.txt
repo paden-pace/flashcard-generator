@@ -1,2 +1,41 @@
-"Who was the first president of the United States?"% "George Washington"^
-"Who was the 16th president of the United States?"% "Abraham Lincoln"^"How many branches does the US Gov have?"%"3"^"How many Senators is each state alocated?"%"2"^
+var questions = [
+    {front: "What was the founding year for Muggle Quidditch?",
+    back: "2005"
+    },
+
+    {front: "How many active positions are on a pitch at a time?",
+    back: "7"
+    },
+
+    {front: "What position is identified with a white headband?",
+    back: "chaser"
+    },
+
+    {front: "What position is identified with a black headband?",
+    back: "beater"
+    },
+
+    {front: "What position is identified with a yellow headband?",
+    back: "seeker"
+    },
+
+    {front: "What position is identified with a green headband?",
+    back: "keeper"
+    },
+
+    {front: "What team won the Quidditch World Cup VI?",
+    back: "Texas Quidditch"
+    },
+
+    {front: "What team won the Quidditch World Cup VII?",
+    back: "Texas Quidditch"
+    },
+
+    {front: "What team won the Quidditch World Cup VIII?",
+    back: "Texas Quidditch"
+    },
+
+    {front: "Do the players actually fly?",
+    back: "no"
+    },
+];
