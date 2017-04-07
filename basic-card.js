@@ -1,9 +1,4 @@
 
-// To Do:  
-// Put the constructor function into a new file 
-
-
-
 var file = require("file-system");
 var fs = require('fs');
 var inquirer = require("inquirer");
@@ -54,16 +49,15 @@ function options (){
         {
             type: "list",
             message: "What would you like to do?",
-            choices: ["review_existing_cards", "exit"],
+            choices: ["create_new_card", "review_existing_cards", "exit"],
             name: "selection"
         }
     ]).then(function(user) {
         switch (user.selection) {
-            //To add the option for Creating Cards (needs to be added to prompt too)
-            // case "create_new_card":
-                //newCard();
-                //options();
-                //break;
+            case "create_new_card":
+                console.log("new clicked");
+                newCard();
+                break;
 
             case "review_existing_cards":
                 reviewCards();
@@ -75,25 +69,36 @@ function options (){
     });
 };
 
-// Old function of adding cards needs to be updated 
+function newCard(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: 'Question of Card (Example: "Who was the first president of the USA?"',
+            name: "front"
+        },
+        {
+            type: "input",
+            message: 'Answer of Card (Example: "George Washington"',
+            name: "back"
+        }   
+    ]).then(function(card) {
 
-// function newCard(){
-//     inquirer.prompt([
-//         {
-//             type: "input",
-//             message: 'Back of Card (Example: "Who was the first president of the USA?"',
-//             name: "back"
-//         },
-//         {
-//             type: "input",
-//             message: 'Front of Card (Example: "George Washington"',
-//             name: "front"
-//         }
-//     ]).then(function(card) {
-//         fs.appendFile("basic.txt", card.back + "%" + card.front + "^");
-//         console.log("new card added to file");
-//     });
-// };
+        var pushCard = {"front": card.front,
+                    "back": card.back
+                };
+        
+        fs.readFile("basic.txt", "utf8", function(err, data) {
+            //console.log(" 0 new card added to file");
+            var questions = JSON.parse(data);
+
+            questions.push(pushCard);
+        
+            var questionStr = JSON.stringify(questions);
+
+            fs.writeFile("basic.txt", questionStr);
+        });
+    });
+};
 
 function reviewCards(){
 
